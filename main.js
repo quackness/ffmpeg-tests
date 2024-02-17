@@ -14,6 +14,13 @@ const targetVideoFile = __dirname + '/sample-10s.mp4';
 console.log(targetVideoFile);
 
 //ask ffmpeg to convert video file to diffrent format https://fluent-ffmpeg.github.io/index.html
-ffmpeg(targetVideoFile).toFormat('webm').saveToFile(__dirname + '/sample-10s.webm');
+ffmpeg(targetVideoFile)
+  .toFormat('webm')
+  // https://www.tabnine.com/code/javascript/modules/fluent-ffmpeg
+  .on('end', () => { console.log("File conversion done") })
+  .on("progress", timemark =>
+    console.log(timemark)
+  )
+  .saveToFile(__dirname + '/sample-10s.webm');
 
 
