@@ -19,7 +19,8 @@ ffmpeg(targetVideoFile)
   // https://www.tabnine.com/code/javascript/modules/fluent-ffmpeg
   .on('end', () => { console.log("File conversion done") })
   .on("progress", timemark =>
-    console.log(timemark)
+  //do this in main in electron
+    console.log(timemark.percent)
   )
   .saveToFile(__dirname + '/sample-10s.webm');
 
